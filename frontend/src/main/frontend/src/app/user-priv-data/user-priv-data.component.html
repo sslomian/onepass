@@ -1,0 +1,49 @@
+<body>
+<div class="container">
+  <div class="userPrivDataList">
+    <md-card class="addUserPrivDataCard">
+
+      <button md-raised-button (click)="openDialog()">Add data</button>
+
+
+      <md-list>
+        <div class="item-desc-cont">
+          <div class="item-list-desc">Username/Email</div>
+          <div class="item-list-desc">Password</div>
+          <div class="item-list-desc">Site</div>
+          <div class="item-list-desc">Description</div>
+        </div>
+        <br>
+        <md-list-item *ngFor="let userData of userPrivData">
+          <div class="item-list">
+            <div *ngIf="userData.hidden == false">
+              {{userData.usernameOrEmail}}
+            </div>
+            <div *ngIf="userData.hidden == true">
+              **********
+            </div>
+          </div>
+          <div class="item-list">
+            <div *ngIf="userData.hidden == false">
+              {{userData.password}}
+            </div>
+            <div *ngIf="userData.hidden == true">
+              **********
+            </div>
+          </div>
+          <div class="item-list">{{userData.site}}</div>
+          <div class="item-list">{{userData.description}}</div>
+          <div class="item-list-button">
+            <button class="delete-button" md-raised-button (click)="delete(userData)">Delete</button>
+            <button md-raised-button (click)="openDialogEdit(userData)">Edit</button>
+            <button md-raised-button (mousedown)="showData(userData)" (mouseup)="hideData(userData)">Show</button>
+          </div>
+        </md-list-item>
+      </md-list>
+    </md-card>
+
+  </div>
+
+
+</div>
+</body>

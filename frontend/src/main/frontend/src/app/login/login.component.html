@@ -1,0 +1,27 @@
+<body>
+<div class="container">
+  <md-card class="login">
+    <div class="login-screen">
+      <div class="space-bot text-center">
+        <h1>Log in</h1>
+        <div class="divider"></div>
+        <div class="input-form">
+          <md-input-container>
+            <input mdInput placeholder="Username" [(ngModel)]="loginUser.username" name="username" required/>
+          </md-input-container>
+          <br>
+          <md-input-container>
+            <input mdInput type="password" [(ngModel)]="loginUser.password" placeholder="Password" name="password" required/>
+          </md-input-container>
+        </div>
+        <div class="button-row">
+          <button md-raised-button (click)="logUser(loginUser)">Login</button>
+          <button md-raised-button>Clear</button>
+        </div>
+      </div>
+
+    </div>
+
+  </md-card>
+</div>
+</body>

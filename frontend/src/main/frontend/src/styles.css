@@ -1,0 +1,13 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+.mat-input-underline {
+  background-color: #224884;
+}
+
+body {
+  background-color: #9ab1d6;
+  min-height: 100%;
+  background-size: 110%;
+  background-position: center center;
+  margin: auto;
+}

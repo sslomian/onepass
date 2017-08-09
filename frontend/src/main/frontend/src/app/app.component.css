@@ -1,0 +1,24 @@
+.header-panel {
+  background-color: #1653b7;
+  width: 100%;
+  height: 40px;
+}
+
+.mat-button {
+  color: white;
+  font-family: "Tekton Pro";
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+.signup-button {
+  float: right;
+}
+
+.login-button {
+  float: right;
+}
+
+.logout-button {
+  float: right;
+}

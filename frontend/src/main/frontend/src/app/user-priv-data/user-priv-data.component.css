@@ -1,0 +1,65 @@
+body {
+  text-align: center;
+}
+
+.userPrivDataList {
+  padding-top: 5%;
+}
+
+
+.addUserPrivDataCard {
+  width: 70%;
+  margin: auto;
+}
+
+h1 {
+  color: black;
+  font-family: 'Tekton Pro';
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 25px;
+  text-align: center;
+}
+
+.mat-raised-button {
+}
+
+.item-list {
+  float: left;
+  width: 15%;
+  height: auto;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.item-list-button {
+  height: auto;
+  float: right;
+  width: 40%;
+}
+
+.item-list-button .mat-raised-button {
+  min-width: 30px;
+  float: right;
+}
+
+.item-desc-cont {
+  width: 100%;
+  padding-bottom: 20px;
+  font-weight: bold;
+  padding-top: 20px;
+}
+
+.item-list-desc {
+  float: left;
+  width: 15%;
+}
+
+.delete-button {
+  background-color: indianred;
+}
+
+
+
+
+

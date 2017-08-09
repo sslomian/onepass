@@ -1,0 +1,49 @@
+<body>
+<div class="container">
+  <md-card class="register">
+    <div class="signup-screen">
+      <div class="space-bot text-center">
+        <h1>Sign up</h1>
+        <div class="divider"></div>
+        <div class="input-form">
+          <md-input-container>
+            <input mdInput placeholder="Username" [(ngModel)]="newUser.username" [formControl]="usernameFormControl"
+                   name="username" required/>
+            <md-error *ngIf="usernameFormControl.hasError('required')">
+              This field is required
+            </md-error>
+          </md-input-container>
+          <br>
+          <md-input-container>
+            <input mdInput type="password" placeholder="Password" [(ngModel)]="newUser.password"
+                   [formControl]="passwordFormControl" minlength="6" name="password" required/>
+            <md-error *ngIf="passwordFormControl.hasError('minlength')">
+              Password length should be between 6 and 40
+            </md-error>
+            <md-error *ngIf="usernameFormControl.hasError('required')">
+              This field is required
+            </md-error>
+          </md-input-container>
+          <br>
+          <md-input-container>
+            <input mdInput type="email" placeholder="Email" [(ngModel)]="newUser.email" [formControl]="emailFormControl"
+                   pattern="^[A-Za-z0-9+_.-]+@(.+)$" required name="email"/>
+            <md-error *ngIf="emailFormControl.hasError('required')">
+              This field is required
+            </md-error>
+            <md-error *ngIf="emailFormControl.hasError('pattern')">
+              Please enter a valid email address
+            </md-error>
+          </md-input-container>
+        </div>
+        <div class="button-row">
+          <button md-raised-button (click)="createUser(newUser)">Save</button>
+          <button md-raised-button>Clear</button>
+        </div>
+      </div>
+
+    </div>
+
+  </md-card>
+</div>
+</body>

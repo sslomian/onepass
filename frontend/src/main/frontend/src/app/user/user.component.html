@@ -1,0 +1,5 @@
+<h2>Welcome</h2>
+<h3>{{loggedUser.username}}</h3>
+<md-list>
+  <md-list-item *ngFor="let user of users"> <b>Username</b> {{user.username}} {{user.password}} {{user.email}}</md-list-item>
+</md-list>

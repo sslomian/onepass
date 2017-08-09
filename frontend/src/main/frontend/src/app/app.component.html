@@ -1,0 +1,24 @@
+<body>
+<div class="header-panel">
+
+  <a routerLink="/userPrivData" routerLinkActive="active">
+  <button md-button class="mat-button">OnePass</button>
+  </a>
+  <a routerLink="/register" routerLinkActive="active">
+    <button *ngIf="!checkIfLogged()" md-button class="mat-button signup-button">Sign in</button>
+  </a>
+  <a routerLink="/login" routerLinkActive="active">
+    <button *ngIf="!checkIfLogged()" md-button class="mat-button login-button">Log in</button>
+  </a>
+  <a routerLink="/logout" routerLinkActive="active">
+    <button *ngIf="checkIfLogged()" md-button class="mat-button logout-button">Logout</button>
+  </a>
+  <a routerLink="/settings" routerLinkActive="active">
+    <button *ngIf="checkIfLogged()" md-button class="mat-button logout-button">Settings</button>
+  </a>
+
+</div>
+
+<router-outlet></router-outlet>
+
+</body>

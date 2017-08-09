@@ -1,0 +1,25 @@
+<h2 md-dialog-title>Add user private data</h2>
+<md-dialog-content>
+  <md-input-container>
+    <input mdInput placeholder="Username/Email" [(ngModel)]="newUserPrivData.usernameOrEmail" required
+           name="usernameOrEmail"/>
+  </md-input-container>
+  <br>
+
+  <md-input-container>
+    <input mdInput placeholder="Password" [(ngModel)]="newUserPrivData.password" required name="password"/>
+  </md-input-container>
+  <br>
+  <md-input-container>
+    <input mdInput placeholder="Site" [(ngModel)]="newUserPrivData.site" required name="site"/>
+  </md-input-container>
+  <br>
+  <md-input-container>
+    <textarea mdInput placeholder="Description" [(ngModel)]="newUserPrivData.description" name="description"></textarea>
+  </md-input-container>
+
+</md-dialog-content>
+<md-dialog-actions>
+  <button md-button [md-dialog-close]="newUserPrivData">Save</button>
+  <button md-button md-dialog-close>Cancel</button>
+</md-dialog-actions>
