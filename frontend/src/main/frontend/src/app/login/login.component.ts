@@ -13,6 +13,11 @@ import { SessionStorageService } from 'ng2-webstorage';
 export class LoginComponent implements OnInit {
 
   loginUser: User;
+  loginSuccessPopup: boolean = false;
+  loginFailedPopup: boolean = false;
+
+  usernameFormControl: FormControl = new FormControl();
+  passwordFormControl: FormControl = new FormControl();
 
   constructor(private router: Router, private userService: UserService, private sessionStorageService: SessionStorageService) { }
 
@@ -21,8 +26,15 @@ export class LoginComponent implements OnInit {
   }
 
   logUser(user: User): void {
-    this.userService.loginUser(user);
-    this.sessionStorageService.store('pass', user.password);
+    this.userService.loginUser(user).then(res => {
+      if(res.length == 0) {
+        this.sessionStorageService.store('pass', user.password);
+        this.loginFailedPopup = false;
+        this.loginSuccessPopup = true;
+        return;
+      }
+      this.loginFailedPopup = true;
+    });
   }
    clear(): void {
 

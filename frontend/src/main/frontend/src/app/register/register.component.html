@@ -7,20 +7,32 @@
         <div class="divider"></div>
         <div class="input-form">
           <md-input-container>
-            <input mdInput placeholder="Username" [(ngModel)]="newUser.username" [formControl]="usernameFormControl"
+            <input mdInput placeholder="Username" pattern="^[A-Za-z0-9+_.-]+" minlength="3" maxlength="30" [(ngModel)]="newUser.username" [formControl]="usernameFormControl"
                    name="username" required/>
             <md-error *ngIf="usernameFormControl.hasError('required')">
               This field is required
+            </md-error>
+            <md-error *ngIf="usernameFormControl.hasError('minlength')">
+              Password length should be between 3 and 30
+            </md-error>
+            <md-error *ngIf="usernameFormControl.hasError('maxlength')">
+              Password length should be between 3 and 30
+            </md-error>
+            <md-error *ngIf="usernameFormControl.hasError('pattern')">
+              Please enter a valid username [A-Za-z0-9+_.-]
             </md-error>
           </md-input-container>
           <br>
           <md-input-container>
             <input mdInput type="password" placeholder="Password" [(ngModel)]="newUser.password"
-                   [formControl]="passwordFormControl" minlength="6" name="password" required/>
+                   [formControl]="passwordFormControl" minlength="6" maxlength="40" name="password" required/>
             <md-error *ngIf="passwordFormControl.hasError('minlength')">
               Password length should be between 6 and 40
             </md-error>
-            <md-error *ngIf="usernameFormControl.hasError('required')">
+            <md-error *ngIf="passwordFormControl.hasError('maxlength')">
+              Password length should be between 6 and 40
+            </md-error>
+            <md-error *ngIf="passwordFormControl.hasError('required')">
               This field is required
             </md-error>
           </md-input-container>
@@ -37,7 +49,7 @@
           </md-input-container>
         </div>
         <div class="button-row">
-          <button md-raised-button (click)="createUser(newUser)">Save</button>
+          <button md-raised-button (click)="createUser(newUser)" [disabled]="(usernameFormControl.hasError('pattern') || usernameFormControl.hasError('maxlength') || usernameFormControl.hasError('minlength') || emailFormControl.hasError('pattern') || emailFormControl.hasError('required') || passwordFormControl.hasError('minlength') || passwordFormControl.hasError('maxlength') || passwordFormControl.hasError('required') || usernameFormControl.hasError('required'))">Save</button>
           <button md-raised-button>Clear</button>
         </div>
       </div>

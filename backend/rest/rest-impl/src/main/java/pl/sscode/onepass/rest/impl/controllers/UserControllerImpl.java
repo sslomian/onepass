@@ -1,7 +1,6 @@
 package pl.sscode.onepass.rest.impl.controllers;
 
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
@@ -51,11 +50,9 @@ public class UserControllerImpl implements UserController {
         return null;
     }
 
-    @Validate({UserLoginValidatorImpl.class})
+    @Validate(value = {UserLoginValidatorImpl.class})
     public ResponseDto<UserDto> login(@RequestBody UserDto userDto) {
-        securityService.login(userDto.getUsername(), userDto.getPassword());
-        UserDto user = userRepositoryService.findByUsername(userDto.getUsername());
-        return new ResponseDto(user);
+        return new ResponseDto();
     }
 
     public UserDto loggedUser(Principal principal) {

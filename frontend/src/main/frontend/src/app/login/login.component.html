@@ -4,18 +4,30 @@
     <div class="login-screen">
       <div class="space-bot text-center">
         <h1>Log in</h1>
+        <div *ngIf="loginFailedPopup" class="login-failed-popup">
+          <h5>The email or password is incorrect.</h5>
+        </div>
+        <div *ngIf="loginSuccessPopup" class="login-success-popup">
+          <h5>You'are logged in</h5>
+        </div>
         <div class="divider"></div>
         <div class="input-form">
           <md-input-container>
-            <input mdInput placeholder="Username" [(ngModel)]="loginUser.username" name="username" required/>
+            <input mdInput placeholder="Username" [(ngModel)]="loginUser.username" [formControl]="usernameFormControl" name="username" required/>
+            <md-error *ngIf="usernameFormControl.hasError('required')">
+              Username cannot be empty.
+            </md-error>
           </md-input-container>
           <br>
           <md-input-container>
-            <input mdInput type="password" [(ngModel)]="loginUser.password" placeholder="Password" name="password" required/>
+            <input mdInput type="password" [(ngModel)]="loginUser.password" [formControl]="passwordFormControl" placeholder="Password" name="password" required/>
+            <md-error *ngIf="passwordFormControl.hasError('required')">
+              Password cannot be empty.
+            </md-error>
           </md-input-container>
         </div>
         <div class="button-row">
-          <button md-raised-button (click)="logUser(loginUser)">Login</button>
+          <button md-raised-button (click)="logUser(loginUser)" [disabled]="(passwordFormControl.hasError('required') || usernameFormControl.hasError('required'))">Login</button>
           <button md-raised-button>Clear</button>
         </div>
       </div>

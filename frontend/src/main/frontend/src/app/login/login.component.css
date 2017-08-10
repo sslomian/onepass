@@ -51,3 +51,25 @@ h1 {
 .button-row {
   padding-top: 30px;
 }
+
+.login-failed-popup {
+  background-color: #bf4055;
+  height: 50px;
+  color: whitesmoke;
+  margin-bottom: 30px;
+  vertical-align: text-bottom;
+}
+
+.login-success-popup {
+  background-color: #558b2f;
+  height: 50px;
+  color: whitesmoke;
+  margin-bottom: 30px;
+}
+
+h5 {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+

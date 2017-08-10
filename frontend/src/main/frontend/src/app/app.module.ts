@@ -23,6 +23,7 @@ import { UserData } from "./user-data";
 import { Ng2Webstorage } from 'ng2-webstorage';
 import { LogoutComponent } from './logout/logout.component';
 import { MdIconModule } from '@angular/material';
+import { Error } from './error';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { MdIconModule } from '@angular/material';
     UserPrivDataService,
     UserPrivDataComponent,
     CryptoService,
-    UserData
+    UserData,
+    Error
   ],
   bootstrap: [AppComponent]
 })
