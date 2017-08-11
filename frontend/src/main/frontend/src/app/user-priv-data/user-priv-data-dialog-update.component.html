@@ -1,17 +1,26 @@
 <h2 md-dialog-title>Edit user private data</h2>
 <md-dialog-content>
   <md-input-container>
-    <input mdInput placeholder="Username/Email" [(ngModel)]="editUserPrivData.usernameOrEmail" value="editUserPrivData.usernameOrEmail" required
+    <input mdInput placeholder="Username/Email" [(ngModel)]="editUserPrivData.usernameOrEmail" [formControl]="usernameFormControl" value="editUserPrivData.usernameOrEmail" required
            name="usernameOrEmail"/>
+    <md-error *ngIf="usernameFormControl.hasError('required')">
+      Username cannot be empty.
+    </md-error>
   </md-input-container>
   <br>
 
   <md-input-container>
-    <input mdInput placeholder="Password" [(ngModel)]="editUserPrivData.password" value="editUserPrivData.password" required name="password"/>
+    <input mdInput placeholder="Password" [(ngModel)]="editUserPrivData.password" [formControl]="passwordFormControl" value="editUserPrivData.password" required name="password"/>
+    <md-error *ngIf="passwordFormControl.hasError('required')">
+      Password cannot be empty.
+    </md-error>
   </md-input-container>
   <br>
   <md-input-container>
-    <input mdInput placeholder="Site" [(ngModel)]="editUserPrivData.site" value="editUserPrivData.site" required name="site"/>
+    <input mdInput placeholder="Site" [(ngModel)]="editUserPrivData.site" [formControl]="siteFormControl" value="editUserPrivData.site" required name="site"/>
+    <md-error *ngIf="siteFormControl.hasError('required')">
+      Site cannot be empty.
+    </md-error>
   </md-input-container>
   <br>
   <md-input-container>
@@ -20,6 +29,6 @@
 
 </md-dialog-content>
 <md-dialog-actions>
-  <button md-button [md-dialog-close]="editUserPrivData">Save</button>
-  <button md-button md-dialog-close>Cancel</button>
+  <button md-button [md-dialog-close]="editUserPrivData" [disabled]="(passwordFormControl.hasError('required') || usernameFormControl.hasError('required') || siteFormControl.hasError('required'))">Save</button>
+  <button md-button [md-dialog-close]="false">Cancel</button>
 </md-dialog-actions>

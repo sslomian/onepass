@@ -1,17 +1,26 @@
 <h2 md-dialog-title>Add user private data</h2>
 <md-dialog-content>
   <md-input-container>
-    <input mdInput placeholder="Username/Email" [(ngModel)]="newUserPrivData.usernameOrEmail" required
+    <input mdInput placeholder="Username/Email" [(ngModel)]="newUserPrivData.usernameOrEmail" [formControl]="usernameFormControl" required
            name="usernameOrEmail"/>
+    <md-error *ngIf="usernameFormControl.hasError('required')">
+      Username cannot be empty.
+    </md-error>
   </md-input-container>
   <br>
 
   <md-input-container>
-    <input mdInput placeholder="Password" [(ngModel)]="newUserPrivData.password" required name="password"/>
+    <input mdInput placeholder="Password" [(ngModel)]="newUserPrivData.password" [formControl]="passwordFormControl" required name="password"/>
+    <md-error *ngIf="passwordFormControl.hasError('required')">
+      Password cannot be empty.
+    </md-error>
   </md-input-container>
   <br>
   <md-input-container>
-    <input mdInput placeholder="Site" [(ngModel)]="newUserPrivData.site" required name="site"/>
+    <input mdInput placeholder="Site" [(ngModel)]="newUserPrivData.site" [formControl]="siteFormControl" required name="site"/>
+    <md-error *ngIf="siteFormControl.hasError('required')">
+      Site cannot be empty.
+    </md-error>
   </md-input-container>
   <br>
   <md-input-container>
@@ -20,6 +29,9 @@
 
 </md-dialog-content>
 <md-dialog-actions>
-  <button md-button [md-dialog-close]="newUserPrivData">Save</button>
-  <button md-button md-dialog-close>Cancel</button>
+  <button md-button [md-dialog-close]="newUserPrivData"
+          [disabled]="(passwordFormControl.hasError('required') || usernameFormControl.hasError('required') || siteFormControl.hasError('required'))">
+    Save
+  </button>
+  <button md-button [md-dialog-close]="false">Cancel</button>
 </md-dialog-actions>

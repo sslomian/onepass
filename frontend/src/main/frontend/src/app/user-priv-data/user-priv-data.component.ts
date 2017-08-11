@@ -1,12 +1,13 @@
-import {Component, Inject, Input, OnInit} from '@angular/core';
-import {MdDialog} from '@angular/material';
-import {UserData} from "../user-data";
-import {Router} from '@angular/router';
-import {UserPrivDataService} from '../user-priv-data.service';
-import {CryptoService} from "../crypto.service";
-import {UserService} from '../user.service';
-import {SessionStorageService} from 'ng2-webstorage';
-import {MD_DIALOG_DATA} from '@angular/material';
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { MdDialog } from '@angular/material';
+import { UserData } from "../user-data";
+import { Router } from '@angular/router';
+import { UserPrivDataService } from '../user-priv-data.service';
+import { CryptoService } from "../crypto.service";
+import { UserService } from '../user.service';
+import { SessionStorageService } from 'ng2-webstorage';
+import { MD_DIALOG_DATA } from '@angular/material';
+import { FormControl } from "@angular/forms";
 
 @Component({
   selector: 'app-user-priv-data',
@@ -31,7 +32,9 @@ export class UserPrivDataComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(
       result => {
-        this.addUserPrivData(result);
+        if (result != false) {
+          this.addUserPrivData(result);
+        }
       }
     );
   }
@@ -53,7 +56,9 @@ export class UserPrivDataComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(
       result => {
-        this.editUserPrivData(result);
+        if (result != false) {
+          this.editUserPrivData(result);
+        }
       }
     );
   }
@@ -111,6 +116,10 @@ export class UserPrivDataDialog implements OnInit {
 
   newUserPrivData: UserData;
 
+  usernameFormControl: FormControl = new FormControl();
+  passwordFormControl: FormControl = new FormControl();
+  siteFormControl: FormControl = new FormControl();
+
   constructor() {
   }
 
@@ -127,6 +136,10 @@ export class UserPrivDataDialog implements OnInit {
 export class UserPrivDataDialogUpdate implements OnInit {
 
   editUserPrivData: UserData;
+
+  usernameFormControl: FormControl = new FormControl();
+  passwordFormControl: FormControl = new FormControl();
+  siteFormControl: FormControl = new FormControl();
 
   constructor(@Inject(MD_DIALOG_DATA) public data: UserData) {
   }

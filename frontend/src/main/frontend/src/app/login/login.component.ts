@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
         this.sessionStorageService.store('pass', user.password);
         this.loginFailedPopup = false;
         this.loginSuccessPopup = true;
+        setTimeout(() => this.router.navigate(['/userPrivData']), 2000);
         return;
       }
       this.loginFailedPopup = true;
