@@ -28,11 +28,11 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  createUser(user: User): Promise<User> {
+  createUser(user: User): Promise<Error[]> {
     return this.http
       .post(this.usersUrl + "/save", JSON.stringify(user), {headers: this.headers})
       .toPromise()
-      .then(res => res.json() as User)
+      .then(res => res.json().errors as Error[])
       .catch(this.handleError);
   }
 
@@ -40,8 +40,7 @@ export class UserService {
     return this.http
       .post(this.loginUrl, JSON.stringify(user), {headers: this.headers})
       .toPromise()
-      .then(res =>
-        res.json().errors as Error[])
+      .then(res => res.json().errors as Error[])
       .catch(this.handleError);
   }
 

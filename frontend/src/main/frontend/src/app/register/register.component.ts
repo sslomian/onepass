@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
-import { UserService } from '../user.service';
-import { FormControl } from "@angular/forms";
-import { Router } from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {User} from '../user';
+import {UserService} from '../user.service';
+import {FormControl} from "@angular/forms";
+import {Router} from "@angular/router";
 import {CryptoService} from "../crypto.service";
 
 @Component({
@@ -16,7 +16,9 @@ export class RegisterComponent implements OnInit {
   usernameFormControl: FormControl = new FormControl();
   passwordFormControl: FormControl = new FormControl();
 
-  errorMessageExample1: string;
+  registerSuccessPopup: boolean;
+  registerEmailFailedPopup: boolean;
+  registerUsernameFailedPopup: boolean;
 
   users: User[];
   newUser: User;
@@ -41,7 +43,27 @@ export class RegisterComponent implements OnInit {
     this.privateKeyToEncrypt = this.generateKey();
     this.privateKeyEncrypted = this.cryptoService.encryptPrivateKey(this.privateKeyToEncrypt, this.newUser.password);
     user.privateKey = this.privateKeyEncrypted;
-    this.userService.createUser(user);
+    this.userService.createUser(user).then(res => {
+
+      this.registerSuccessPopup = false;
+      this.registerUsernameFailedPopup = false;
+      this.registerEmailFailedPopup = false;
+
+      if (res.length == 0) {
+        this.registerEmailFailedPopup = false;
+        this.registerUsernameFailedPopup = false;
+        this.registerSuccessPopup = true;
+        return;
+      }
+      res.forEach(response => {
+          if (response.code == "110") {
+            this.registerUsernameFailedPopup = true;
+          } else if (response.code == "111") {
+            this.registerEmailFailedPopup = true;
+          }
+        }
+      )
+    });
   }
 
   generateKey(): String {

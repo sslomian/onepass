@@ -38,3 +38,30 @@ h1 {
   font-size: 20px;
   margin-top: 5px;
 }
+
+.register-email-failed-popup {
+  background-color: #bf4055;
+  height: 50px;
+  color: whitesmoke;
+  margin-bottom: 30px;
+  vertical-align: text-bottom;
+}
+
+.register-username-failed-popup {
+  background-color: #bf4055;
+  height: 50px;
+  color: whitesmoke;
+  margin-bottom: 30px;
+}
+
+.register-success-popup {
+  background-color: #558b2f;
+  height: 50px;
+  color: whitesmoke;
+  margin-bottom: 30px;
+}
+
+h5 {
+  display: inline-block;
+  vertical-align: middle;
+}

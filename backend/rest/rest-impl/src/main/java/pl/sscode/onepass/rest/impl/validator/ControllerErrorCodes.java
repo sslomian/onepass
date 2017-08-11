@@ -5,7 +5,9 @@ package pl.sscode.onepass.rest.impl.validator;
  */
 public enum ControllerErrorCodes {
     USER_NOT_FOUND("100", "user.login.userNotFound"),
-    WRONG_PASSWORD("101", "user.login.wrongPassword")
+    WRONG_PASSWORD("101", "user.login.wrongPassword"),
+    USERNAME_ALREADY_USE("110", "user.register.usernameAlreadyUse"),
+    EMAIL_ALREADY_USE("111", "user.register.email.AlreadyUse")
 
 
 

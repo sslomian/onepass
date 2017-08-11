@@ -10,4 +10,6 @@ public interface UserRepositoryService extends RepositoryService<UserDto, Long> 
 
     UserDto findByUsername(String username);
 
+    UserDto findByEmail(String email);
+
 }

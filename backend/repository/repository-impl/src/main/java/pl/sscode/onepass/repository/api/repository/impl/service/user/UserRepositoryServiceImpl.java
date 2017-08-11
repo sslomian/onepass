@@ -57,6 +57,13 @@ public class UserRepositoryServiceImpl extends AbstractRepositoryService<UserDto
     }
 
     @Override
+    public UserDto findByEmail(String email) {
+        User entity = repository.findByEmail(email);
+        logger.info("Found user for email: {} -> {}", email, entity);
+        return convertToDto(entity);
+    }
+
+    @Override
     public UserDto save(UserDto dto) {
         dto.setPassword(passwordEncoder.encode(dto.getPassword()));
 

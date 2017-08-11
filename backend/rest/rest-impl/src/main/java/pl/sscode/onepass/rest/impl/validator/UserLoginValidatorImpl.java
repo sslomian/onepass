@@ -22,8 +22,6 @@ import static org.slf4j.LoggerFactory.getLogger;
 @Component
 public class UserLoginValidatorImpl implements Validator<UserDto> {
 
-    private final Logger logger = getLogger(UserLoginValidatorImpl.class);
-
     @Autowired
     private UserRepositoryService userRepositoryService;
 

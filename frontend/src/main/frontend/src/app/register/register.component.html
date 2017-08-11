@@ -4,10 +4,20 @@
     <div class="signup-screen">
       <div class="space-bot text-center">
         <h1>Sign up</h1>
+        <div *ngIf="registerUsernameFailedPopup" class="register-username-failed-popup">
+          <h5>Username is already in use</h5>
+        </div>
+        <div *ngIf="registerEmailFailedPopup" class="register-email-failed-popup">
+          <h5>Email is already in use</h5>
+        </div>
+        <div *ngIf="registerSuccessPopup" class="register-success-popup">
+          <h5>Register success</h5>
+        </div>
         <div class="divider"></div>
         <div class="input-form">
           <md-input-container>
-            <input mdInput placeholder="Username" pattern="^[A-Za-z0-9+_.-]+" minlength="3" maxlength="30" [(ngModel)]="newUser.username" [formControl]="usernameFormControl"
+            <input mdInput placeholder="Username" pattern="^[A-Za-z0-9+_.-]+" minlength="3" maxlength="30"
+                   [(ngModel)]="newUser.username" [formControl]="usernameFormControl"
                    name="username" required/>
             <md-error *ngIf="usernameFormControl.hasError('required')">
               This field is required
@@ -49,7 +59,12 @@
           </md-input-container>
         </div>
         <div class="button-row">
-          <button md-raised-button (click)="createUser(newUser)" [disabled]="(usernameFormControl.hasError('pattern') || usernameFormControl.hasError('maxlength') || usernameFormControl.hasError('minlength') || emailFormControl.hasError('pattern') || emailFormControl.hasError('required') || passwordFormControl.hasError('minlength') || passwordFormControl.hasError('maxlength') || passwordFormControl.hasError('required') || usernameFormControl.hasError('required'))">Save</button>
+          <button md-raised-button (click)="createUser(newUser)" [disabled]="(usernameFormControl.hasError('pattern')
+          || usernameFormControl.hasError('maxlength') || usernameFormControl.hasError('minlength')
+           || emailFormControl.hasError('pattern') || emailFormControl.hasError('required') ||
+            passwordFormControl.hasError('minlength') || passwordFormControl.hasError('maxlength') ||
+             passwordFormControl.hasError('required') || usernameFormControl.hasError('required'))">Save
+          </button>
           <button md-raised-button>Clear</button>
         </div>
       </div>

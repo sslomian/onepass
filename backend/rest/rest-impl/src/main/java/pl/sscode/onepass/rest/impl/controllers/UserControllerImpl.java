@@ -11,6 +11,7 @@ import pl.sscode.onepass.rest.api.model.ResponseDto;
 import pl.sscode.onepass.rest.api.security.SecurityService;
 import pl.sscode.onepass.rest.api.validation.Validate;
 import pl.sscode.onepass.rest.impl.validator.UserLoginValidatorImpl;
+import pl.sscode.onepass.rest.impl.validator.UserRegisterValidatorImpl;
 
 import java.security.Principal;
 import java.util.List;
@@ -41,6 +42,8 @@ public class UserControllerImpl implements UserController {
         return new ResponseDto(userRepositoryService.findAll());
     }
 
+
+    @Validate(value = {UserRegisterValidatorImpl.class})
     public ResponseDto<UserDto> save(@RequestBody UserDto userDto) {
         UserDto user = userRepositoryService.save(userDto);
         return new ResponseDto(user);
