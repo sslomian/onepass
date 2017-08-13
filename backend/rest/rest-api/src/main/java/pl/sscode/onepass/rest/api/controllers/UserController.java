@@ -28,6 +28,10 @@ public interface UserController extends RestController<ResponseDto<UserDto>> {
     @ResponseBody
     ResponseDto<UserDto> save(@RequestBody UserDto userDto);
 
+    @RequestMapping(value = "api/users/update", method = RequestMethod.POST)
+    @ResponseBody
+    ResponseDto<UserDto> update(@RequestBody UserDto userDto);
+
     @RequestMapping(value = "/register}", method = RequestMethod.POST)
     @ResponseBody
     ResponseDto<UserDto> register(@RequestBody UserDto userDto);

@@ -23,5 +23,10 @@ export class AppComponent implements OnInit {
     } else return true;
   }
 
+  logout() {
+    this.sessionStorageService.clear("pass");
+    this.sessionStorageService.clear("privateKey");
+  }
+
 
 }

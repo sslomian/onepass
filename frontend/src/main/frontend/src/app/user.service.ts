@@ -17,7 +17,6 @@ export class UserService {
   private loginUrl = '/api/login';
   private logoutUrl = '/api/logout';
   private loggedUserUrl = '/api/loggedUser';
-  private isLoggedUrl = '/api/isLogged';
   private headers = new Headers({'Content-Type': 'application/json'});
 
 
@@ -31,6 +30,14 @@ export class UserService {
   createUser(user: User): Promise<Error[]> {
     return this.http
       .post(this.usersUrl + "/save", JSON.stringify(user), {headers: this.headers})
+      .toPromise()
+      .then(res => res.json().errors as Error[])
+      .catch(this.handleError);
+  }
+
+  updateUser(user: User): Promise<Error[]> {
+    return this.http
+      .post(this.usersUrl + "/update", JSON.stringify(user), {headers: this.headers})
       .toPromise()
       .then(res => res.json().errors as Error[])
       .catch(this.handleError);

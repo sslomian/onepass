@@ -1,0 +1,29 @@
+body {
+  text-align: center;
+}
+
+.settingsCard {
+  width: 50%;
+  margin: auto;
+}
+
+.settings {
+  padding-top: 5%;
+}
+
+h1 {
+  color: black;
+  font-family: 'Tekton Pro';
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 25px;
+  text-align: center;
+}
+
+.buttonDetails {
+  padding-top: 30px;
+}
+
+.changePassword {
+  padding-top: 30px;
+}

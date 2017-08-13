@@ -13,8 +13,6 @@ export class LogoutComponent implements OnInit {
 
   ngOnInit() {
     this.userService.logout();
-    this.sessionStorageService.clear("pass");
-    this.sessionStorageService.clear("privateKey");
   }
 
 }

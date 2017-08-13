@@ -11,7 +11,7 @@
     <button *ngIf="!checkIfLogged()" md-button class="mat-button login-button">Log in</button>
   </a>
   <a routerLink="/logout" routerLinkActive="active">
-    <button *ngIf="checkIfLogged()" md-button class="mat-button logout-button">Logout</button>
+    <button *ngIf="checkIfLogged()" (click)="logout()" md-button class="mat-button logout-button">Logout</button>
   </a>
   <a routerLink="/settings" routerLinkActive="active">
     <button *ngIf="checkIfLogged()" md-button class="mat-button logout-button">Settings</button>

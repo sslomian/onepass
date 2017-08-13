@@ -1,3 +1,46 @@
-<p>
-  user-info works!
-</p>
+<body>
+<div class="container">
+  <div class="settings">
+    <md-card class="settingsCard">
+      <h1>User settings</h1>
+      <div class="userDetails">
+        <b>Username:</b> {{user.username}}<br>
+        <b>Email:</b> {{user.email}}
+      </div>
+      <div class="buttonDetails">
+        <button md-raised-button (click)="showChange()">Change password</button>
+      </div>
+      <div *ngIf="showChangePassword == true" class="changePassword">
+        <md-input-container>
+          <input mdInput placeholder="New Password" type="password" minlength="6" maxlength="40"
+                 [(ngModel)]="newPassword" [formControl]="newPasswordFormControl"
+                 name="newPassword" required/>
+          <md-error *ngIf="newPasswordFormControl.hasError('required')">
+            New password cannot be empty.
+          </md-error>
+          <md-error *ngIf="newPasswordFormControl.hasError('minlength')">
+            Password length should be between 6 and 40
+          </md-error>
+          <md-error *ngIf="newPasswordFormControl.hasError('maxlength')">
+            Password length should be between 6 and 40
+          </md-error>
+        </md-input-container>
+        <br>
+        <md-input-container>
+          <input mdInput placeholder="Re-type New Password" type="password" [(ngModel)]="retypePassword"
+                 [formControl]="retypePasswordFormControl" name="RetypeNewPassword"
+                 required/>
+          <md-error *ngIf="retypePasswordFormControl.hasError('required')">
+            Re-type password cannot be empty.
+          </md-error>
+        </md-input-container>
+        <br>
+        <button md-raised-button (click)="saveNewPassword(user, newPassword)" [disabled]="(newPasswordFormControl.hasError('required')
+         || newPasswordFormControl.hasError('minlength') || newPasswordFormControl.hasError('maxlength')
+         || retypePasswordFormControl.hasError('required') || newPassword != retypePassword)">Save</button>
+      </div>
+
+    </md-card>
+  </div>
+</div>
+</body>

@@ -7,6 +7,7 @@ import { AppComponent } from '../app.component';
 import { UserPrivDataComponent } from '../user-priv-data/user-priv-data.component';
 import {LoginComponent} from "../login/login.component";
 import {LogoutComponent} from "../logout/logout.component";
+import {UserInfoComponent} from "../user-info/user-info.component";
 
 const routes: Routes = [
   { path: 'users', component: UserComponent },
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'home', component: AppComponent },
-  { path: 'userPrivData', component: UserPrivDataComponent }
+  { path: 'userPrivData', component: UserPrivDataComponent },
+  { path: 'settings', component: UserInfoComponent }
 ]
 
 @NgModule({

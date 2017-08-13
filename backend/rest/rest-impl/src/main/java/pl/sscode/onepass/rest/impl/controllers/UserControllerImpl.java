@@ -1,5 +1,6 @@
 package pl.sscode.onepass.rest.impl.controllers;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -38,6 +39,7 @@ public class UserControllerImpl implements UserController {
         userRepositoryService.delete(id);
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseDto<List<UserDto>> findAll() {
         return new ResponseDto(userRepositoryService.findAll());
     }
@@ -45,6 +47,11 @@ public class UserControllerImpl implements UserController {
 
     @Validate(value = {UserRegisterValidatorImpl.class})
     public ResponseDto<UserDto> save(@RequestBody UserDto userDto) {
+        UserDto user = userRepositoryService.save(userDto);
+        return new ResponseDto(user);
+    }
+
+    public ResponseDto<UserDto> update(@RequestBody UserDto userDto) {
         UserDto user = userRepositoryService.save(userDto);
         return new ResponseDto(user);
     }
