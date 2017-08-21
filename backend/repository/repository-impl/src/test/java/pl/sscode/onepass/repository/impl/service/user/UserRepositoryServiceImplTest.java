@@ -4,7 +4,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import pl.sscode.onepass.repository.api.dto.UserDto;
 import pl.sscode.onepass.repository.api.entities.User;
 import pl.sscode.onepass.repository.api.repository.api.converter.Converter;
@@ -23,7 +25,7 @@ import static org.mockito.Mockito.when;
 public class UserRepositoryServiceImplTest {
 
     private static final String USERNAME = "useruser";
-    private static final String EMAIL = "loopData@loopData.com";
+    private static final String EMAIL = "email@email.com";
     private static final String PASSWORD = "passwordpass";
 
     @InjectMocks
@@ -31,6 +33,9 @@ public class UserRepositoryServiceImplTest {
 
     @Mock
     private Converter<User, UserDto> converter;
+
+    @Mock
+    private PasswordEncoder passwordEncoder;
 
     @Mock
     private UserRepository userRepository;
@@ -45,6 +50,7 @@ public class UserRepositoryServiceImplTest {
         dto.setPassword(PASSWORD);
         User entity = mock(User.class);
 
+        when(passwordEncoder.encode(dto.getPassword())).thenReturn(PASSWORD);
         when(converter.convertFrom(dto)).thenReturn(entity);
         when(userRepository.save(entity)).thenReturn(entity);
         when(converter.convertTo(entity)).thenReturn(dto);
@@ -53,7 +59,9 @@ public class UserRepositoryServiceImplTest {
         UserDto saved = userRepositoryService.save(dto);
 
         //then
+        verify(passwordEncoder).encode(PASSWORD);
         verify(converter).convertFrom(dto);
+        verify(userRepository).save(entity);
         verify(converter).convertTo(entity);
         assertThat(saved).isEqualTo(dto);
 
@@ -76,5 +84,20 @@ public class UserRepositoryServiceImplTest {
         assertThat(found).isEqualTo(dto);
 
     }
+
+    @Test
+    public void shouldFindByEmail() throws Exception {
+        UserDto dto = mock(UserDto.class);
+        User entity = mock(User.class);
+
+        when(userRepository.findByEmail(EMAIL)).thenReturn(entity);
+        when(converter.convertTo(entity)).thenReturn(dto);
+
+        UserDto found = userRepositoryService.findByEmail(EMAIL);
+
+        verify(converter).convertTo(entity);
+        assertThat(found).isEqualTo(dto);
+    }
+
 
 }

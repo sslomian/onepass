@@ -83,24 +83,6 @@ public class UserTest {
         assertThat(violations.iterator().next().getMessage()).isEqualTo("Email must match \"^[A-Za-z0-9+_.-]+@(.+)$\"");
     }
 
-    @Test
-    public void shouldViolatePasswordSizeMin() throws Exception {
-        User user = setupAccount();
-        user.setPassword("aaa");
-        Set<ConstraintViolation<User>> violations = validator.validate(user);
-        assertThat(violations).hasSize(1);
-        assertThat(violations.iterator().next().getMessage()).isEqualTo("Password length should be between 8 and 40");
-    }
-
-    @Test
-    public void shouldViolatePasswordSizeMax() throws Exception {
-        User user = setupAccount();
-        user.setPassword("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        Set<ConstraintViolation<User>> violations = validator.validate(user);
-        assertThat(violations).hasSize(1);
-        assertThat(violations.iterator().next().getMessage()).isEqualTo("Password length should be between 8 and 40");
-    }
-
     private User setupAccount() {
         User user = new User();
         user.setUsername(USERNAME);

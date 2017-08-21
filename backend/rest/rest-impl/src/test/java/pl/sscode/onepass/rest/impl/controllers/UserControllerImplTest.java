@@ -14,6 +14,7 @@ import pl.sscode.onepass.rest.api.model.ResponseDto;
 import java.util.List;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
 
 /**
  * Created by sscode on 2017-06-18.
@@ -30,7 +31,7 @@ public class UserControllerImplTest {
 
     @Test
     public void shouldSave() {
-        UserDto userDto = Mockito.mock(UserDto.class);
+        UserDto userDto = mock(UserDto.class);
 
         Mockito.when(userRepositoryService.save(userDto)).thenReturn(userDto);
 
@@ -55,7 +56,7 @@ public class UserControllerImplTest {
     @Test
     public void shouldFindAll() throws Exception {
         //given
-        UserDto accountDto = Mockito.mock(UserDto.class);
+        UserDto accountDto = mock(UserDto.class);
 
         Mockito.when(userRepositoryService.findAll()).thenReturn(Lists.newArrayList(accountDto));
 
@@ -70,7 +71,7 @@ public class UserControllerImplTest {
     @Test
     public void shouldFindByUsername() throws Exception {
         //given
-        UserDto userDto = Mockito.mock(UserDto.class);
+        UserDto userDto = mock(UserDto.class);
         String username = "username";
 
         Mockito.when(userRepositoryService.findByUsername(username)).thenReturn(userDto);
@@ -81,6 +82,18 @@ public class UserControllerImplTest {
         //then
         Mockito.verify(userRepositoryService).findByUsername(username);
         assertThat(account.getObject()).isEqualTo(userDto);
+    }
+
+    @Test
+    public void shouldUpdate() throws Exception {
+        UserDto userDto = mock(UserDto.class);
+
+        Mockito.when(userRepositoryService.save(userDto)).thenReturn(userDto);
+
+        ResponseDto<UserDto> saved = userController.update(userDto);
+
+        Mockito.verify(userRepositoryService).save(userDto);
+        assertThat(saved.getObject()).isEqualTo(userDto);
     }
 
 }

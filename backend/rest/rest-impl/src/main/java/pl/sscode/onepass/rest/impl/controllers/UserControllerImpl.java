@@ -56,10 +56,6 @@ public class UserControllerImpl implements UserController {
         return new ResponseDto(user);
     }
 
-    public ResponseDto<UserDto> register(UserDto userDto) {
-        return null;
-    }
-
     @Validate(value = {UserLoginValidatorImpl.class})
     public ResponseDto<UserDto> login(@RequestBody UserDto userDto) {
         return new ResponseDto();

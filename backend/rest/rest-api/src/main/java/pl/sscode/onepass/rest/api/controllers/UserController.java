@@ -32,10 +32,6 @@ public interface UserController extends RestController<ResponseDto<UserDto>> {
     @ResponseBody
     ResponseDto<UserDto> update(@RequestBody UserDto userDto);
 
-    @RequestMapping(value = "/register}", method = RequestMethod.POST)
-    @ResponseBody
-    ResponseDto<UserDto> register(@RequestBody UserDto userDto);
-
     @RequestMapping(value = "api/login", method = RequestMethod.POST)
     @ResponseBody
     ResponseDto<UserDto> login(@RequestBody UserDto userDto);
