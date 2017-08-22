@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import pl.sscode.onepass.repository.api.dto.UserDto;
@@ -14,9 +13,7 @@ import pl.sscode.onepass.repository.api.repository.impl.repository.UserRepositor
 import pl.sscode.onepass.repository.api.repository.impl.service.user.UserRepositoryServiceImpl;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by sscode on 2017-06-15.
@@ -97,6 +94,12 @@ public class UserRepositoryServiceImplTest {
 
         verify(converter).convertTo(entity);
         assertThat(found).isEqualTo(dto);
+    }
+
+    @Test
+    public void shouldDelete() throws Exception {
+        userRepositoryService.delete(1L);
+        verify(userRepository, times(1)).delete(1L);
     }
 
 

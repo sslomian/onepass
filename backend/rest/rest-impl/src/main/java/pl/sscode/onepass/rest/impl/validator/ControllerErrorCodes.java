@@ -8,9 +8,6 @@ public enum ControllerErrorCodes {
     WRONG_PASSWORD("101", "user.login.wrongPassword"),
     USERNAME_ALREADY_USE("110", "user.register.usernameAlreadyUse"),
     EMAIL_ALREADY_USE("111", "user.register.email.AlreadyUse")
-
-
-
     ;
 
     private String code;

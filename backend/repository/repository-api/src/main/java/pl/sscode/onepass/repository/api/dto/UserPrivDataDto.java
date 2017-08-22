@@ -3,10 +3,6 @@ package pl.sscode.onepass.repository.api.dto;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import pl.sscode.onepass.repository.api.entities.User;
-
-import javax.persistence.*;
-import javax.validation.constraints.Size;
 
 /**
  * Created by sscode on 2017-07-21.

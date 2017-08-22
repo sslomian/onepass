@@ -2,12 +2,8 @@ package pl.sscode.onepass.repository.api.repository.impl.convert.user;
 
 import org.springframework.stereotype.Service;
 import pl.sscode.onepass.repository.api.dto.UserDto;
-import pl.sscode.onepass.repository.api.entities.Authority;
-import pl.sscode.onepass.repository.api.entities.AuthorityType;
 import pl.sscode.onepass.repository.api.entities.User;
 import pl.sscode.onepass.repository.api.repository.api.converter.Converter;
-
-import java.util.List;
 
 /**
  * Created by sscode on 2017-06-15.

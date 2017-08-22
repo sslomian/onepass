@@ -2,14 +2,11 @@ package pl.sscode.onepass.repository.api.repository.impl.service.userPrivData;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.sscode.onepass.repository.api.dto.UserDto;
 import pl.sscode.onepass.repository.api.dto.UserPrivDataDto;
 import pl.sscode.onepass.repository.api.entities.User;
 import pl.sscode.onepass.repository.api.entities.UserPrivData;
-import pl.sscode.onepass.repository.api.repository.api.converter.Converter;
 import pl.sscode.onepass.repository.api.repository.impl.convert.user.UserConverterImpl;
 import pl.sscode.onepass.repository.api.repository.impl.convert.userPrivData.UserPrivDataConverterImpl;
 import pl.sscode.onepass.repository.api.repository.impl.repository.UserPrivDataRepository;
@@ -17,7 +14,6 @@ import pl.sscode.onepass.repository.api.repository.impl.service.AbstractReposito
 import pl.sscode.onepass.repository.api.service.userPrivData.UserPrivDataRepositoryService;
 
 import javax.transaction.Transactional;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -95,5 +95,4 @@ public class UserControllerImplTest {
         Mockito.verify(userRepositoryService).save(userDto);
         assertThat(saved.getObject()).isEqualTo(userDto);
     }
-
 }

@@ -1,30 +1,24 @@
 package pl.sscode.onepass.repository.impl.service.userPrivData;
 
-import com.sun.xml.internal.bind.v2.TODO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Qualifier;
 import pl.sscode.onepass.repository.api.dto.UserDto;
 import pl.sscode.onepass.repository.api.dto.UserPrivDataDto;
 import pl.sscode.onepass.repository.api.entities.User;
 import pl.sscode.onepass.repository.api.entities.UserPrivData;
-import pl.sscode.onepass.repository.api.repository.api.converter.Converter;
 import pl.sscode.onepass.repository.api.repository.impl.convert.user.UserConverterImpl;
 import pl.sscode.onepass.repository.api.repository.impl.convert.userPrivData.UserPrivDataConverterImpl;
 import pl.sscode.onepass.repository.api.repository.impl.repository.UserPrivDataRepository;
-import pl.sscode.onepass.repository.api.repository.impl.repository.UserRepository;
 import pl.sscode.onepass.repository.api.repository.impl.service.userPrivData.UserPrivDataRepositoryServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by sscode on 2017-07-24.
@@ -116,6 +110,12 @@ public class UserPrivDataRepositoryServiceImplTest {
         verify(userPrivDataRepository).findByUser(user);
         verify(userPrivDataConverter).convertTo(userPrivData);
 
+    }
+
+    @Test
+    public void shouldDelete() throws Exception {
+        userPrivDataRepositoryService.delete(1L);
+        verify(userPrivDataRepository, times(1)).delete(1L);
     }
 
 }

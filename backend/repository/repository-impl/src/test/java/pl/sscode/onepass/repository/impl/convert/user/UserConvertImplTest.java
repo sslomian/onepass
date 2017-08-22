@@ -29,11 +29,6 @@ public class UserConvertImplTest {
         assertThat(userDto.getUsername()).isEqualTo(user.getUsername());
         assertThat(userDto.getPassword()).isEqualTo(user.getPassword());
         assertThat(userDto.getEmail()).isEqualTo(user.getEmail());
-       /* assertThat(userDto.getCreated()).isEqualTo(user.getCreated());
-        assertThat(userDto.getUpdated()).isEqualTo(user.getUpdated());
-        assertThat(userDto.getLastLoginTime()).isEqualTo(user.getLastLoginTime());
-        assertThat(userDto.getUserData()).isEqualTo(user.getUserData());*/
-
     }
 
     @Test
@@ -46,11 +41,6 @@ public class UserConvertImplTest {
         assertThat(user.getUsername()).isEqualTo(userDto.getUsername());
         assertThat(user.getPassword()).isEqualTo(userDto.getPassword());
         assertThat(user.getEmail()).isEqualTo(userDto.getEmail());
-       /* assertThat(user.getCreated()).isEqualTo(userDto.getCreated());
-        assertThat(user.getUpdated()).isEqualTo(userDto.getUpdated());
-        assertThat(user.getLastLoginTime()).isEqualTo(userDto.getLastLoginTime());
-        assertThat(user.getUserData()).isEqualTo(userDto.getUserData());*/
-
     }
 
 
@@ -60,10 +50,6 @@ public class UserConvertImplTest {
         userDto.setUsername("useruser");
         userDto.setEmail("loopData@loopData.com");
         userDto.setPassword("passwordpass");
-        /*userDto.setCreated(new DateTime());
-        userDto.setUpdated(new DateTime());
-        userDto.setLastLoginTime(new DateTime());
-        userDto.setUserData(new HashSet<>());*/
         return userDto;
     }
 
@@ -74,10 +60,6 @@ public class UserConvertImplTest {
         user.setUsername("useruser");
         user.setEmail("loopData@loopData.com");
         user.setPassword("passwordpass");
-        /*user.setCreated(new DateTime());
-        user.setUpdated(new DateTime());
-        user.setLastLoginTime(new DateTime());
-        user.setUserData(new HashSet<>());*/
         return user;
     }
 }
