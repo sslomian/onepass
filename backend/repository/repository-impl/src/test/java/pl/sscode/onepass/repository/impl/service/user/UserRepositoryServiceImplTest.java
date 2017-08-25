@@ -7,8 +7,11 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import pl.sscode.onepass.repository.api.dto.UserDto;
+import pl.sscode.onepass.repository.api.entities.Authority;
+import pl.sscode.onepass.repository.api.entities.AuthorityType;
 import pl.sscode.onepass.repository.api.entities.User;
 import pl.sscode.onepass.repository.api.repository.api.converter.Converter;
+import pl.sscode.onepass.repository.api.repository.impl.repository.AuthorityRepository;
 import pl.sscode.onepass.repository.api.repository.impl.repository.UserRepository;
 import pl.sscode.onepass.repository.api.repository.impl.service.user.UserRepositoryServiceImpl;
 
@@ -37,6 +40,9 @@ public class UserRepositoryServiceImplTest {
     @Mock
     private UserRepository userRepository;
 
+    @Mock
+    private AuthorityRepository authorityRepository;
+
     @Test
     public void shouldSaveAccount() throws Exception {
         //given
@@ -47,10 +53,14 @@ public class UserRepositoryServiceImplTest {
         dto.setPassword(PASSWORD);
         User entity = mock(User.class);
 
+        Authority authority = new Authority();
+        authority.setAuthority(AuthorityType.USER);
+
         when(passwordEncoder.encode(dto.getPassword())).thenReturn(PASSWORD);
         when(converter.convertFrom(dto)).thenReturn(entity);
         when(userRepository.save(entity)).thenReturn(entity);
         when(converter.convertTo(entity)).thenReturn(dto);
+        when(authorityRepository.save(authority)).thenReturn(authority);
 
         //when
         UserDto saved = userRepositoryService.save(dto);
@@ -60,6 +70,7 @@ public class UserRepositoryServiceImplTest {
         verify(converter).convertFrom(dto);
         verify(userRepository).save(entity);
         verify(converter).convertTo(entity);
+        verify(authorityRepository).save(authority);
         assertThat(saved).isEqualTo(dto);
 
     }

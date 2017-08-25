@@ -24,12 +24,6 @@ public class UserDto {
 
     private String privateKey;
 
-/*    private DateTime created;
-
-    private DateTime updated;
-
-    private DateTime lastLoginTime;*/
-
     public UserDto(String username, String password, String email) {
         this.username = username;
         this.password = password;

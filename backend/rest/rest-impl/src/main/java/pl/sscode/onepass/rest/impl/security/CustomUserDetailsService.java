@@ -45,8 +45,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     private Set<GrantedAuthority> getAuthorities(UserDto userDto) {
         Set<GrantedAuthority> authorities = new HashSet<>();
-        /*userDto.getAuthorities().forEach(item -> authorities.add(new SimpleGrantedAuthority(item.toString())));*/
-        authorities.add(new SimpleGrantedAuthority("USER"));
+        userDto.getAuthorities().forEach(item -> authorities.add(new SimpleGrantedAuthority(item.toString())));
+        /*authorities.add(new SimpleGrantedAuthority("USER"));*/
         return authorities;
     }
 }
