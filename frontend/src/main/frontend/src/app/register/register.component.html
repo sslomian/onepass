@@ -59,13 +59,13 @@
           </md-input-container>
         </div>
         <div class="button-row">
-          <button md-raised-button (click)="createUser(newUser)" [disabled]="(usernameFormControl.hasError('pattern')
+          <button md-raised-button color="primary" (click)="createUser(newUser)" [disabled]="(usernameFormControl.hasError('pattern')
           || usernameFormControl.hasError('maxlength') || usernameFormControl.hasError('minlength')
            || emailFormControl.hasError('pattern') || emailFormControl.hasError('required') ||
             passwordFormControl.hasError('minlength') || passwordFormControl.hasError('maxlength') ||
              passwordFormControl.hasError('required') || usernameFormControl.hasError('required'))">Save
           </button>
-          <button md-raised-button>Clear</button>
+          <button  md-raised-button color="warn" (click)="clear()">Clear</button>
         </div>
       </div>
 

@@ -29,6 +29,6 @@
 
 </md-dialog-content>
 <md-dialog-actions>
-  <button md-button [md-dialog-close]="editUserPrivData" [disabled]="(passwordFormControl.hasError('required') || usernameFormControl.hasError('required') || siteFormControl.hasError('required'))">Save</button>
-  <button md-button [md-dialog-close]="false">Cancel</button>
+  <button md-raised-button color="primary" [md-dialog-close]="editUserPrivData" [disabled]="(passwordFormControl.hasError('required') || usernameFormControl.hasError('required') || siteFormControl.hasError('required'))">Save</button>
+  <button md-raised-button color="warn" [md-dialog-close]="false">Cancel</button>
 </md-dialog-actions>

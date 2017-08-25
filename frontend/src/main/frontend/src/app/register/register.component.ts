@@ -31,7 +31,6 @@ export class RegisterComponent implements OnInit {
 
 
   constructor(private router: Router, private userService: UserService, private cryptoService: CryptoService) {
-
   }
 
   ngOnInit() {
@@ -73,6 +72,12 @@ export class RegisterComponent implements OnInit {
       this.privateKeyGenerator = this.privateKeyGenerator.concat(this.char);
     }
     return this.privateKeyGenerator
+  }
+
+  clear(): void {
+    this.newUser.username = "";
+    this.newUser.password = "";
+    this.newUser.email = "";
   }
 
 }

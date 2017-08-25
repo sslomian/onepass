@@ -37,8 +37,10 @@ export class LoginComponent implements OnInit {
       this.loginFailedPopup = true;
     });
   }
-   clear(): void {
 
+   clear(): void {
+    this.loginUser.username = "";
+    this.loginUser.password = "";
    }
 
 }

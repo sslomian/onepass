@@ -27,8 +27,8 @@
           </md-input-container>
         </div>
         <div class="button-row">
-          <button md-raised-button (click)="logUser(loginUser)" [disabled]="(passwordFormControl.hasError('required') || usernameFormControl.hasError('required'))">Login</button>
-          <button md-raised-button>Clear</button>
+          <button md-raised-button color="primary" (click)="logUser(loginUser)" [disabled]="(passwordFormControl.hasError('required') || usernameFormControl.hasError('required'))">Login</button>
+          <button md-raised-button color="warn" (click)="clear()">Clear</button>
         </div>
       </div>
 

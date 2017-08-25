@@ -5,7 +5,6 @@
 
       <button md-raised-button (click)="openDialog()">Add data</button>
 
-
       <md-list>
         <div class="item-desc-cont">
           <div class="item-list-desc">Username/Email</div>
@@ -34,7 +33,7 @@
           <div class="item-list">{{userData.site}}</div>
           <div class="item-list">{{userData.description}}</div>
           <div class="item-list-button">
-            <button class="delete-button" md-raised-button (click)="delete(userData)">Delete</button>
+            <button class="delete-button" color="warn" md-raised-button (click)="delete(userData)">Delete</button>
             <button md-raised-button (click)="openDialogEdit(userData)">Edit</button>
             <button md-raised-button (mousedown)="showData(userData)" (mouseup)="hideData(userData)">Show</button>
           </div>

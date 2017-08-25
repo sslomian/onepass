@@ -40,7 +40,7 @@ h1 {
 }
 
 .register-email-failed-popup {
-  background-color: #bf4055;
+  background-color: #f44336;
   height: 50px;
   color: whitesmoke;
   margin-bottom: 30px;
@@ -48,7 +48,7 @@ h1 {
 }
 
 .register-username-failed-popup {
-  background-color: #bf4055;
+  background-color: #f44336;
   height: 50px;
   color: whitesmoke;
   margin-bottom: 30px;
